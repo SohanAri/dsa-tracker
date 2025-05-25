@@ -1,0 +1,381 @@
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #4fc3f7;
+    --background-color: #f5f7fa;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --completed-color: #4caf50;
+    --in-progress-color: #ff9800;
+    --not-started-color: #9e9e9e;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.progress-overview {
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+.progress-bar-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--accent-color);
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.progress-stats {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.search-container {
+    display: flex;
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 1rem;
+}
+
+.search-container button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.filter-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-container select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background-color: white;
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+.phases-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.phase-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.phase-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.phase-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.phase-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.phase-progress-bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    height: 10px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.phase-progress-fill {
+    background-color: var(--accent-color);
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.phase-content {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.phase-content.expanded {
+    max-height: 2000px;
+    padding: 1rem;
+}
+
+.topic-container {
+    margin-bottom: 1.5rem;
+}
+
+.topic-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.topic-problems {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.topic-problems.expanded {
+    max-height: 2000px;
+}
+
+.problem-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid var(--not-started-color);
+}
+
+.problem-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.problem-card.completed {
+    border-left-color: var(--completed-color);
+}
+
+.problem-card.in-progress {
+    border-left-color: var(--in-progress-color);
+}
+
+.problem-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.problem-card .problem-status {
+    font-size: 0.8rem;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+}
+
+.problem-card .completed-status {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--completed-color);
+}
+
+.problem-card .in-progress-status {
+    background-color: rgba(255, 152, 0, 0.1);
+    color: var(--in-progress-color);
+}
+
+.problem-card .not-started-status {
+    background-color: rgba(158, 158, 158, 0.1);
+    color: var(--not-started-color);
+}
+
+/* Modal Styles */
+.problem-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 2rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-problem-details {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.problem-links a {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.problem-links a:hover {
+    text-decoration: underline;
+}
+
+.problem-notes {
+    grid-column: 1 / -1;
+}
+
+.problem-notes textarea {
+    width: 100%;
+    height: 100px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    resize: vertical;
+}
+
+.modal-problem-details select, 
+.modal-problem-details input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    margin-top: 0.5rem;
+}
+
+.modal-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-actions button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#save-problem-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#cancel-problem-btn {
+    background-color: #f1f1f1;
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-problem-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        width: 100%;
+    }
+    
+    .filter-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .filter-container select {
+        flex: 1;
+    }
+}
