@@ -1,6 +1,5 @@
 # DSA Journey Tracker
 
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-green)
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 
@@ -22,9 +21,6 @@ A comprehensive web application to track your Data Structures and Algorithms lea
 - **💾 Persistent Storage**: All progress is automatically saved in your browser's localStorage
 - **📱 Responsive Design**: Works on desktop and mobile devices
 
-## 🚀 Live Demo
-
-Visit the live demo: [DSA Journey Tracker](https://github.com/SohanAri/dsa-tracker)
 
 ## 📋 DSA Study Plan
 
